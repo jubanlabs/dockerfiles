@@ -5,4 +5,5 @@ RUN apt-get update && apt-get install gnupg2 zip -y \
   && rm -rf /var/cache/apt/* \
   && npm install -g cordova \
   && curl -s "https://get.sdkman.io" | bash \
-  && /bin/bash  -c "source /root/.sdkman/bin/sdkman-init.sh && sdk install gradle"
+  && /bin/bash  -c "source /root/.sdkman/bin/sdkman-init.sh && sdk install gradle" \
+  && rm -rf /var/cache/apt/*
