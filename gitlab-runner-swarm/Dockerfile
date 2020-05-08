@@ -1,3 +1,3 @@
 FROM gitlab/gitlab-runner:latest
-COPY run-in-swarm .
+COPY gitlab-runner-swarm/run-in-swarm .
 CMD ["run-in-swarm"]
