@@ -1,0 +1,19 @@
+set -e
+printf "Setting configuration...\\n"
+#  export CONCURRENT=8
+export REGISTER_NON_INTERACTIVE=1
+export REGISTER_LOCKED=0
+export RUNNER_EXECUTOR=docker
+export DOCKER_IMAGE=docker
+export DOCKER_VOLUMES=/var/run/docker.sock:/var/run/docker.sock
+export REGISTRATION_TOKEN="$$(cat /run/secrets/GITLAB_REGISTRATION_TOKEN)"
+# sed -i "s/^concurrent = .*/concurrent = $${CONCURRENT}/" /etc/gitlab-runner/config.toml
+printf "\\n"
+printf "Registering runner...\\n"
+gitlab-runner register --non-interactive
+printf "\\n"
+printf "List runners...\\n"
+gitlab-runner list
+printf "\\n"
+printf "Running runner...\\n"
+gitlab-runner run --user=gitlab-runner --working-directory=/home/gitlab-runner 
